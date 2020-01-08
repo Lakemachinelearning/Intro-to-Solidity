@@ -1,17 +1,17 @@
 pragma solidity ^0.5.12;
 
 contract People {
-    Person[] public people;
-
-    uint256 public peopleCount;
+    uint256 public peopleCount = 0;
+    mapping (uint => Person) public people;
 
     struct Person {
+        uint _id;
         string _firstName;
         string _lastName;
     }
 
     function addPerson(string memory _firstname, string memory _lastname) public {
-        people.push(Person(_firstName, _lastName));
         peopleCount += 1;
+        people[peopleCount] = Person(_firstName, _lastName);
     }
 }
